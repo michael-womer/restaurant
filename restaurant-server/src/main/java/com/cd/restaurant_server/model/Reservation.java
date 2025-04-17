@@ -1,4 +1,4 @@
-package com.restaurantserver.model;
+package com.cd.restaurant_server.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
