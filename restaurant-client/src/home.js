@@ -1,3 +1,8 @@
+import { createNavbar } from './components/navbar.js';
+
+const navbar = createNavbar();
+app.appendChild(navbar);
+
 const app = document.getElementById('app');
 
 // Welcome Message
