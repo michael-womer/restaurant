@@ -1,9 +1,4 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import { createReservationPage } from './reservation.js';
-import { createMenuPage } from './menu.js';
-import App from './App.jsx'
 import { createMenuItem } from './menuItem.js';
 
 const sampleItem = {
