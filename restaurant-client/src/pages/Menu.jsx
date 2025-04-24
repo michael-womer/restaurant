@@ -1,6 +1,5 @@
 import React from 'react';
-import MenuSection from './MenuSection';
-
+import MenuItem from '../components/MenuItem'
 const menuData = {
   Brunch: [
     {
@@ -209,12 +208,24 @@ const Menu = () => {
     <div style={styles.container}>
       <h1 style={styles.title}>Our Menu</h1>
       {Object.entries(menuData).map(([category, items]) => (
-        <MenuSection key={category} category={category} items={items} />
+        <div key={category} style={styles.category}>
+          <h2 style={styles.categoryTitle}>{category}</h2>
+          <div style={styles.itemsContainer}>
+            {items.map((item, index) => (
+              <MenuItem
+                key={index}
+                name={item.name}
+                description={item.description}
+                price={item.price}
+                image={item.image}
+              />
+            ))}
+          </div>
+        </div>
       ))}
     </div>
   );
 };
-
 const styles = {
   container: {
     fontFamily: 'Poppins, sans-serif',
@@ -226,6 +237,18 @@ const styles = {
     textAlign: 'center',
     marginBottom: '40px',
   },
+  category: {
+    marginBottom: '40px',
+  },
+  categoryTitle: {
+    fontSize: '24px',
+    marginBottom: '20px',
+    textAlign: 'center',
+  },
+  itemsContainer: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+    gap: '20px',
+  },
 };
-
 export default Menu;

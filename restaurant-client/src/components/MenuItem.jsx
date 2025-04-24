@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const MenuItem = ({ name, description, price, image }) => {
   const cardStyle = {
@@ -58,11 +57,5 @@ const MenuItem = ({ name, description, price, image }) => {
   );
 };
 
-MenuItem.propTypes = {
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-};
 
 export default MenuItem;
