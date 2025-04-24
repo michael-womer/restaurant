@@ -4,19 +4,23 @@ import com.cd.restaurant_server.exceptions.ResourceCreationException;
 import com.cd.restaurant_server.exceptions.ResourceNotFoundException;
 import com.cd.restaurant_server.model.Reservation;
 import com.cd.restaurant_server.repository.ReservationRepository;
-import org.springframework.cglib.core.Local;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class ReservationServiceImpl implements ReservationService {
 
 private ReservationRepository reservationRepository;
-
+    @Autowired
+    ReservationServiceImpl(ReservationRepository reservationRepository) {
+        this.reservationRepository = reservationRepository;
+    }
     @Override
     public Reservation create(Reservation reservation) throws ResourceCreationException {
-        Optional<Reservation> optional = reservationRepository.findByTime(reservation.getReservationDateTime());
+        Optional<Reservation> optional = reservationRepository.findByReservationDateTime(reservation.getReservationDateTime());
         if (optional.isPresent()){
             throw new ResourceCreationException("There is already a reservation for this time: " + reservation.getReservationDateTime());
         }
@@ -27,7 +31,7 @@ private ReservationRepository reservationRepository;
 
     @Override
     public Reservation getByReservationDateTime(LocalDateTime reservationDateTime) throws ResourceNotFoundException {
-        Reservation reservation = reservationRepository.findByTime(reservationDateTime)
+        Reservation reservation = reservationRepository.findByReservationDateTime(reservationDateTime)
                 .orElseThrow(()->new ResourceNotFoundException("No reservation at this time: " + reservationDateTime));
         return reservation;
     }
