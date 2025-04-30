@@ -1,14 +1,19 @@
 import React from 'react';
-import './Navbar.css'; // Optional: External CSS for styles
+import { Link } from 'react-router-dom';
+import './Navbar.css'; // Ensure this file contains your custom styles
 
 const Navbar = () => {
   return (
     <header className="navbar">
-      <div className="logo">Eats & Vibes</div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="menu.html">Menu</a>
-        <a href="reservation.html">Reservation</a>
+      <div className="navbar__logo">
+        <Link to="/" className="navbar__logo-link">
+          Eats & Vibes
+        </Link>
+      </div>
+      <nav className="navbar__menu">
+        <Link to="/" className="navbar__link">Home</Link>
+        <Link to="/menu" className="navbar__link">Menu</Link>
+        <Link to="/reservation" className="navbar__link">Reservation</Link>
       </nav>
     </header>
   );
