@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Reservation = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +9,7 @@ const Reservation = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -19,6 +20,12 @@ const Reservation = () => {
     e.preventDefault();
     console.log('Submitted Reservation:', formData);
     setSubmitted(true);
+
+    // Simulate email confirmation
+    setTimeout(() => {
+      console.log(`Confirmation email sent to ${formData.email}`);
+      setEmailSent(true);
+    }, 1500); // Simulate 1.5s delay
   };
 
   const sizes = ['1', '2', '3-4', '5-6', '7+'];
@@ -44,9 +51,7 @@ const Reservation = () => {
             onChange={handleChange}
           />
 
-          <label style={styles.label} htmlFor="partySize">
-            Party Size
-          </label>
+          <label style={styles.label} htmlFor="partySize">Party Size</label>
           <select
             id="partySize"
             value={formData.partySize}
@@ -54,13 +59,9 @@ const Reservation = () => {
             required
             style={styles.select}
           >
-            <option value="" disabled>
-              Select party size
-            </option>
+            <option value="" disabled>Select party size</option>
             {sizes.map((size) => (
-              <option key={size} value={size}>
-                {size}
-              </option>
+              <option key={size} value={size}>{size}</option>
             ))}
           </select>
 
@@ -81,18 +82,20 @@ const Reservation = () => {
           ✨ Thank you! Your reservation request has been received. ✨
           <br />
           We’ll be in touch shortly.
+          {emailSent && (
+            <div style={styles.emailNotice}>
+              📧 A confirmation email has been sent to <strong>{formData.email}</strong>.
+            </div>
+          )}
         </div>
       )}
     </div>
   );
 };
 
-// Reusable Input + Label
 const LabelInput = ({ label, id, type, value, onChange }) => (
   <>
-    <label style={styles.label} htmlFor={id}>
-      {label}
-    </label>
+    <label style={styles.label} htmlFor={id}>{label}</label>
     <input
       id={id}
       type={type}
@@ -156,6 +159,11 @@ const styles = {
     fontSize: '18px',
     color: '#4caf50',
     fontWeight: '500',
+  },
+  emailNotice: {
+    marginTop: '20px',
+    color: '#333',
+    fontSize: '16px',
   },
 };
 
