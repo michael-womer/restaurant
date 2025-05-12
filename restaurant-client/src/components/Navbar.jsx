@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../Navbar.css'
 function Navbar  () {
 
   const navigate = useNavigate();
@@ -11,9 +12,9 @@ function Navbar  () {
       
       </div>
       <nav className="navbar__menu">
-        <button className="navbar__link" onClick={() => {navigate("/")}}>Home</button>
-        <button className="navbar__link" onClick={() => {navigate("/menu")}}>Menu</button>
-        <button className="navbar__link" onClick={() => {navigate("/reserve")}}>Reserve</button>
+        <button className="navbar__link" onClick={() => {navigate("/")}}>HOME</button>
+        <button className="navbar__link" onClick={() => {navigate("/menu")}}>MENU</button>
+        <button className="navbar__link" onClick={() => {navigate("/reserve")}}>RESERVE</button>
       </nav>
     </header>
     </div>

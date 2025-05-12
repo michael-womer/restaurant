@@ -1,7 +1,12 @@
 import React from 'react';
 import './Home.css';
-
+import MenuItem from './components/MenuItem';
+function getDayOfWeek(dayIndex) {
+  let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  return days[dayIndex];
+}
 const Home = () => {
+  const date = new Date()
   return (
     <div>
     
@@ -15,8 +20,14 @@ const Home = () => {
       </section>
 
       <section className="specials-section">
-        <h2>Specials</h2>
-        {/* Specials content will go here */}
+        <h2>{getDayOfWeek(date.getDay())} Specials</h2>
+        <MenuItem   
+        name={'Loaded Flatbread'}
+        description={'Flatbread with cheese, tomato, arugula & balsamic.'}
+        price={'$11'}
+        image={'https://neuroticmommy.com/wp-content/uploads/2018/10/Vegan-Bruschetta-and-Arugula-Flatbread-Pizza-With-a-Balsamic-Glaze-4.jpg'}
+        colorScheme={'dark'}>
+        </MenuItem>
       </section>
 
       <section className="info-section">

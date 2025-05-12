@@ -1,14 +1,14 @@
 import React from 'react';
 
-const MenuItem = ({ name, description, price, image }) => {
+const MenuItem = ({ name, description, price, image, colorScheme }) => {
   const cardStyle = {
-    border: '1px solid #eee',
+    border: '1px solid ' + colorScheme == 'dark' ? '#333': '#eee',
     borderRadius: '10px',
     overflow: 'hidden',
     boxShadow: '0 2px 6px rgba(0,0,0,0.05)',
-    backgroundColor: '#fff',
+    backgroundColor: colorScheme == 'dark' ? '#333': '#fff',
     transition: 'transform 0.2s ease',
-    cursor: 'pointer',
+    color: colorScheme == 'dark' ? '#fff': '#333'
   };
 
   const imgStyle = {
@@ -19,6 +19,7 @@ const MenuItem = ({ name, description, price, image }) => {
 
   const contentStyle = {
     padding: '15px',
+    
   };
 
   const titleStyle = {
@@ -28,7 +29,8 @@ const MenuItem = ({ name, description, price, image }) => {
 
   const descStyle = {
     fontSize: '14px',
-    color: '#666',
+    color: colorScheme == 'dark' ? '#D3D3D3': '#666'
+
   };
 
   const costStyle = {
@@ -36,16 +38,13 @@ const MenuItem = ({ name, description, price, image }) => {
     marginTop: '10px',
   };
 
-  const [isHovered, setIsHovered] = React.useState(false);
 
   return (
     <div
       style={{
-        ...cardStyle,
-        transform: isHovered ? 'scale(1.02)' : 'scale(1)',
+        ...cardStyle
       }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+    
     >
       <img src={image} alt={name} style={imgStyle} />
       <div style={contentStyle}>

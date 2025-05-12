@@ -218,6 +218,7 @@ const Menu = () => {
                 description={item.description}
                 price={item.price}
                 image={item.image}
+                colorScheme={'light'}
               />
             ))}
           </div>

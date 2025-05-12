@@ -146,7 +146,7 @@ const styles = {
   button: {
     marginTop: '30px',
     padding: '15px',
-    backgroundColor: '#ff7043',
+    backgroundColor: '#f39c12',
     color: 'white',
     fontSize: '16px',
     border: 'none',

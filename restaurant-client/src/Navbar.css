@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #fff;
+    background-color: #f39c12;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
@@ -26,8 +26,13 @@
     color: #555;
     text-decoration: none;
     transition: color 0.3s;
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    cursor: pointer;
+
   }
   
   .navbar__link:hover {
-    color: #f39c12;
+    color: #fff;
   }
